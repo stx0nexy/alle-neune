@@ -1,0 +1,95 @@
+/* Общие стили */
+.app__reservation {
+  padding: 2rem 4rem;
+  border: 1px solid var(--color-golden);
+  background: var(--color-black);
+}
+
+.app__reservation-heading {
+  text-align: center;
+}
+
+.app__reservation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.app__reservation-form input,
+.app__reservation-form select,
+.app__reservation-form textarea {
+  width: 100%;
+  border: 1px solid var(--color-golden);
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: var(--font-base);
+  color: var(--color-white);
+  padding: 0.75rem 1rem;
+  background: var(--color-black);
+}
+
+.app__reservation-form .form-group {
+  position: relative;
+}
+
+.app__reservation-form .error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.app__reservation-form .checkbox-wrapper input[type="checkbox"] {
+  appearance: auto;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 0.15em;
+  margin-right: 0.5em;
+  color: var(--color-white);
+  outline: none;
+  cursor: pointer;
+}
+
+.app__reservation-form .checkbox-wrapper .link {
+  color: var(--color-golden);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.app__reservation-form .custom__button {
+  width: max-content;
+  background: gray;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+}
+
+.app__reservation-form .custom__button:enabled {
+  background: gold;
+}
+
+.app__reservation-form .loader {
+  border: 3px solid #f3f3f3; /* Светлый цвет фона */
+  border-radius: 50%;
+  border-top: 3px solid gold; /* Цвет верхней части бордюра */
+  width: 1rem;
+  height: 1rem;
+  animation: spin 1s linear infinite;
+}
+
+.app__reservation-form .message-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--color-black);
+  color: var(--color-golden);
+  border: 1px solid var(--color-golden);
+  border-radius: 5px;
+  text-align: center;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
