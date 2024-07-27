@@ -25,6 +25,7 @@ const Footer = () => (
             src={images.spoon}
             className="spoon__img"
             style={{ marginTop: 15 }}
+            alt="spoon_foto"
           />
           <div className="app__footer-links_icons">
           <a href="https://www.facebook.com/people/Kegelgaststätte-Alle-Neune/100055892773306/" target="_blank" rel="noopener noreferrer">
