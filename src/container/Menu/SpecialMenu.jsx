@@ -9,13 +9,13 @@ const SpecialMenu = () => {
 
   useEffect(() => {
     // Fetch categories
-    fetch("http://localhost:5222/api/catalog/categories?api-version=1.0")
+    fetch("https://localhost:5222/api/catalog/categories?api-version=1.0")
       .then((response) => response.json())
       .then((data) => {
         setCategories(data);
         // Fetch items for each category
         data.forEach((category) => {
-          fetch(`http://localhost:5222/api/catalog/items/type/all/category/${category.id}?PageSize=35&PageIndex=0&api-version=1.0`)
+          fetch(`https://localhost:5222/api/catalog/items/type/all/category/${category.id}?PageSize=35&PageIndex=0&api-version=1.0`)
             .then((response) => response.json())
             .then((itemsData) => {
               setItems((prevItems) => ({
