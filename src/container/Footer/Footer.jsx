@@ -1,5 +1,5 @@
 import React from "react";
-import { FiFacebook, FiTwitter, FiInstagram } from "react-icons/fi";
+import { FiFacebook } from "react-icons/fi";
 
 import { images } from "../../constants";
 import "./Footer.css";

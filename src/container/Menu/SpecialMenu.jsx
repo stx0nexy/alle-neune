@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { SubHeading, MenuItem } from "../../components";
-import { images } from "../../constants";
 import "./SpecialMenu.css";
 
 const SpecialMenu = () => {

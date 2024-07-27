@@ -1,4 +1,3 @@
-// src/constants/images.js
 import bg from '../assets/bg.jpg';
 import chef from '../assets/chef2.jpg';
 import gallery01 from '../assets/1.jpg';
