@@ -1,3 +1,4 @@
+// src/constants/images.js
 import bg from '../assets/bg.jpg';
 import chef from '../assets/chef2.jpg';
 import gallery01 from '../assets/1.jpg';
@@ -20,7 +21,7 @@ import sign from '../assets/sign.png';
 import quote from '../assets/quote.png';
 import gericht from '../assets/logo3.png';
 
-export default {
+const images = {
   bg,
   chef,
   gallery01,
@@ -43,3 +44,5 @@ export default {
   quote,
   gericht,
 };
+
+export default images;
