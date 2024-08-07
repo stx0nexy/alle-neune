@@ -9,18 +9,18 @@ const SpecialMenu = () => {
 
   useEffect(() => {
     // Fetch categories
-    fetch("https://www.kegelgaststaette-alle-neune.com:5222/api/catalog/categories?api-version=1.0")
+    fetch("http://stx0nexy-001-site1.etempurl.com/api/v1/Bff/Categories",{method: "GET"})
       .then((response) => response.json())
       .then((data) => {
         setCategories(data);
         // Fetch items for each category
         data.forEach((category) => {
-          fetch(`https://www.kegelgaststaette-alle-neune.com:5222/api/catalog/items/type/all/category/${category.id}?PageSize=35&PageIndex=0&api-version=1.0`)
+          fetch(`http://stx0nexy-001-site1.etempurl.com/api/v1/Bff/ItemsByCategory/${category.id}`)
             .then((response) => response.json())
             .then((itemsData) => {
               setItems((prevItems) => ({
                 ...prevItems,
-                [category.id]: itemsData.data, // Use data property
+                [category.id]: itemsData, // Use data property
               }));
             });
         });

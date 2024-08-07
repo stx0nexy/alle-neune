@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SubHeading from "../../components/SubHeading/SubHeading";
 import "./Reserve.css";
+import LoadingButton from '@mui/lab/LoadingButton';
 
 const Reserve = () => {
   const [formData, setFormData] = useState({
     date: "",
     time: "",
+    title: "",
     name: "",
     surname: "",
     phoneNumber: "+49",
@@ -33,6 +35,7 @@ const Reserve = () => {
     '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00',
     '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30'
   ];
+  const titles = [ 'Herr', "Frau"];
 
   const validateField = (name, value) => {
     const newErrors = { ...errors };
@@ -99,6 +102,7 @@ const Reserve = () => {
     const newErrors = {};
     if (!formData.date) newErrors.date = "Datum ist erforderlich";
     if (!formData.time) newErrors.time = "Uhrzeit ist erforderlich";
+    if (!formData.title) newErrors.title = "Title ist erforderlich";
     if (!formData.name) newErrors.name = "Name ist erforderlich";
     if (!formData.surname) newErrors.surname = "Nachname ist erforderlich";
     if (!formData.agreeToTerms) newErrors.agreeToTerms = "Einverstanden mit den Bedingungen ist erforderlich";
@@ -124,6 +128,7 @@ const Reserve = () => {
     const data = {
       DateReservation: formData.date,
       TimeReservation: timeWithSeconds,
+      Title: formData.title,
       Name: formData.name,
       Surname: formData.surname,
       PhoneNumber: formData.phoneNumber,
@@ -131,7 +136,7 @@ const Reserve = () => {
       Message: formData.message,
     };
 
-    fetch("http://localhost:5223/api/reserve/items?api-version=1.0", {
+    fetch("http://stx0nexy-001-site1.etempurl.com/api/v1/Bff/AddReserve", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -141,10 +146,11 @@ const Reserve = () => {
       .then((response) => {
         console.log("Response Status:", response.status);
 
-        if (response.status === 201) {
+        if (response.status === 200) {
           setFormData({
             date: "",
             time: "",
+            title: "",
             name: "",
             surname: "",
             phoneNumber: "+49",
@@ -175,6 +181,7 @@ const Reserve = () => {
     return (
       formData.date &&
       formData.time &&
+      formData.title &&
       formData.name &&
       formData.surname &&
       formData.phoneNumber &&
@@ -216,6 +223,16 @@ const Reserve = () => {
               ))}
             </select>
             {errors.time && <div className="error-message">{errors.time}</div>}
+          </div>
+
+          <div className="form-group">
+            <select name="title" value={formData.title} onChange={handleChange} required>
+              <option value="" disabled>Wählen Sie 'Frau' oder 'Herr'</option>
+              {titles.map((title) => (
+                <option key={title} value={title}>{title}</option>
+              ))}
+            </select>
+            {errors.title && <div className="error-message">{errors.title}</div>}
           </div>
 
           <div className="form-group">
@@ -303,9 +320,14 @@ const Reserve = () => {
           </div>
 
           <div className="form-group">
-            <button type="submit" className="custom__button" disabled={!isFormValid()}>
-              {loading ? <span className="loader"></span> : 'Reservieren'}
-            </button>
+            <LoadingButton
+              type="submit"
+              variant="contained"
+              loading={loading}
+              disabled={!isFormValid()}
+            >
+              Reservieren
+            </LoadingButton>
           </div>
 
           {message && <div className="message-box">{message}</div>}
