@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import TermsOfService from './components/Services/TermsOfService';
 import PrivacyPolicy from './components/Services/PrivacyPolicy';
